@@ -1,33 +1,32 @@
 <template>
   <div 
     class="film-card"
-    :style="{ 'background-image': `url(${cover})` }"
+    :style="{ 'background-image': `url(${film.cover})` }"
   >
     <p class="film-card__title">
-      {{ title }}
+      {{ film.title }}
     </p>
     
     <div
       class="film-card__rating"
     >
-      {{ rating }}
+      {{ film.rating }}
     </div>
-    
+
+    <router-link
+      class="film-card__more"
+      :to="{ name: 'filmPage', params: { id: film.id } }"
+    >
+      Подробнее о фильме
+    </router-link>
   </div>
 </template>
 
 <script>
   export default {
     props: {
-      title: {
-        type: String,
-        required: true
-      },
-      cover: {
-        type: String
-      },
-      rating: {
-        type: String
+      film: {
+        type: Object
       }
     }
   }
@@ -67,6 +66,29 @@
     padding: 10px 0 0 20px;
     border-radius: 0 10px 0 10px;
     opacity: 0.7;
+  }
+
+  &__more {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 30px;
+    text-decoration: none;
+    opacity: 0;
+    transition: all 0.2s ease;
+    &:hover, &:focus {
+      opacity: 1;
+    }
+
   }
 
 }

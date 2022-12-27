@@ -4,11 +4,12 @@
     <h1 class="all-films__title">Выбери фильм на свой вкус</h1>
     <film-card
       class="all-films__card"
-      v-for="(film, index) in previews"
+      v-for="(film, index) in filmdata"
       :key="index"
       :title="film.title"
       :cover="film.cover"
       :rating="film.rating"
+      :film="film"
     />
         
   </div>
@@ -26,8 +27,7 @@ import FilmCard from '../components/FilmCard.vue'
 
     data() {
       return {
-        filmdata,
-        previews: filmdata.preview
+        filmdata
       } 
     }
         
